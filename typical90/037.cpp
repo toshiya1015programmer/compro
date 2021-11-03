@@ -7,7 +7,7 @@ using S = long long;
 S op(S a, S b) { return max(a, b); }
 S e() { return -1e18; }
 using F = long long;
-F mapping(F f, S x) { return f == 0 ? x : max(x, f); }
+S mapping(F f, S x) { return f == 0 ? x : max(x, f); }
 F composition(F f, F g) { return f == 0 ? g : max(g, f); }
 F id() { return 0; }
 

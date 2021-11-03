@@ -7,7 +7,7 @@ using S = int;
 S op(S a, S b) { return max(a, b); }
 S e() { return 0; }
 using F = int;
-F mapping(F f, S x) { return f == 0 ? x : f; }
+S mapping(F f, S x) { return f == 0 ? x : f; }
 F composition(F f, F g) { return f == 0 ? g : f; }
 F id() { return 0; }
 
