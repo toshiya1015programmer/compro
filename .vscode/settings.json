@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "*.tsx": "typescriptreact",
+        "all": "cpp",
+        "iomanip": "cpp",
+        "ostream": "cpp",
+        "bitset": "cpp",
+        "chrono": "cpp",
+        "algorithm": "cpp",
+        "tuple": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
+}
