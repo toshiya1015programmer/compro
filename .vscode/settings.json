@@ -7,7 +7,9 @@
         "bitset": "cpp",
         "chrono": "cpp",
         "algorithm": "cpp",
-        "tuple": "cpp"
+        "tuple": "cpp",
+        "lazysegtree": "cpp",
+        "*.tcc": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
