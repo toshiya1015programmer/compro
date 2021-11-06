@@ -28,6 +28,7 @@ int main() {
   }
   sort(coords.begin(), coords.end());
   vector<Point> ps;
+  // 凸包
   for (int k = 0; k < 2; k++) {
     vector<Point> points;
     for (int i = 0; i < n; i++) {
