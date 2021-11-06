@@ -10,9 +10,6 @@ Point operator+(const Point& a, const Point& b) {
 Point operator-(const Point& a, const Point& b) {
   return Point { a.x - b.x, a.y - b.y };
 }
-Point operator/(const Point& a, const long long n) {
-  return Point { a.x / n, a.y / n };
-}
 bool operator<(const Point& a, const Point& b) {
   return a.x != b.x ? a.x < b.x : a.y < b.y;
 }
