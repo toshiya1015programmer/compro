@@ -30,6 +30,7 @@ int main() {
   for (int i = 0; i < k; i++) {
     for (int s = 0; s < (1 << n); s++) {
       // bit 集合の集合 s を包含する集合 t の列挙
+      // https://kmyk.github.io/blog/blog/2017/07/16/enumerate-sets-with-bit-manipulation/
       for (int t = s; t < (1 << n); t = (t + 1) | s) {
         int u = t - s;
         dp[i + 1][t] = min(dp[i + 1][t], max(dp[i][s], dist(u)));
