@@ -9,10 +9,7 @@ int main() {
     cin >> x[i] >> y[i];
   }
   vector<long long> memo(1 << n, -1);
-  auto dist = [&](int s) -> long long {
-    if (memo[s] != -1) {
-      return memo[s];
-    }
+  for (int s = 0; s < (1 << n); s++) {
     long long ret = 0;
     for (int i = 0; i < n; i++) {
       for (int j = i + 1; j < n; j++) {
@@ -23,8 +20,8 @@ int main() {
         }
       }
     }
-    return memo[s] = ret;
-  };
+    memo[s] = ret;
+  }
   vector<vector<long long>> dp(k + 1, vector<long long>(1 << n, 1e18));
   dp[0][0] = 0;
   for (int i = 0; i < k; i++) {
@@ -33,7 +30,7 @@ int main() {
       // https://kmyk.github.io/blog/blog/2017/07/16/enumerate-sets-with-bit-manipulation/
       for (int t = s; t < (1 << n); t = (t + 1) | s) {
         int u = t - s;
-        dp[i + 1][t] = min(dp[i + 1][t], max(dp[i][s], dist(u)));
+        dp[i + 1][t] = min(dp[i + 1][t], max(dp[i][s], memo[u]));
       }
     }
   }
