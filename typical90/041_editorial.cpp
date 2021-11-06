@@ -65,9 +65,7 @@ int main() {
     int j = (i + 1) % ps.size();
     s += cross(ps[i], ps[j]);
     auto d = ps[i] - ps[j];
-    if (d.x < 0) d.x *= -1;
-    if (d.y < 0) d.y *= -1;
-    auto g = __gcd(d.x, d.y);
+    auto g = abs(__gcd(d.x, d.y));
     b += g;
   }
   auto ans = (abs(s) - b + 2) / 2 + b - n;
