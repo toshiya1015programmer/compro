@@ -26,7 +26,7 @@ int main() {
   dp[0][0] = 0;
   for (int i = 0; i < k; i++) {
     for (int s = 0; s < (1 << n); s++) {
-      // bit 集合の集合 s を包含する集合 t の列挙
+      // bit集合の集合sを包含する集合tの列挙
       // https://kmyk.github.io/blog/blog/2017/07/16/enumerate-sets-with-bit-manipulation/
       for (int t = s; t < (1 << n); t = (t + 1) | s) {
         int u = t - s;
