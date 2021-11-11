@@ -9,7 +9,8 @@
         "algorithm": "cpp",
         "tuple": "cpp",
         "lazysegtree": "cpp",
-        "*.tcc": "cpp"
+        "*.tcc": "cpp",
+        "mincostflow": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
