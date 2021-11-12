@@ -1,5 +1,4 @@
 tmp/
 .DS_Store
 a.out
-main.cpp
 *.txt

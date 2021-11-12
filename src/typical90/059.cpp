@@ -1,3 +1,4 @@
+#include <unistd.h>
 #include <bits/stdc++.h>
 #include <atcoder/scc>
 using namespace std;
@@ -45,7 +46,9 @@ int main() {
   // 具体的には、値が大きいほどメモリ使用量が小さくなる
   // ・BIT_SIZE=32  1,260,104 KB
   // ・BIT_SIZE=36  1,124,364 KB
-  // ・BIT_SIZE=40  1,016,032 KB
+  // ・BIT_SIZE=38  1,076,868 KB
+  // ・BIT_SIZE=39  1,049,878 KB
+  // ・BIT_SIZE=40  1,024,236 KB
   // ・BIT_SIZE=64    649,664 KB
   const int BIT_SIZE = 64;
 
