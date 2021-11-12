@@ -10,7 +10,10 @@
         "tuple": "cpp",
         "lazysegtree": "cpp",
         "*.tcc": "cpp",
-        "mincostflow": "cpp"
+        "mincostflow": "cpp",
+        "deque": "cpp",
+        "vector": "cpp",
+        "random": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
