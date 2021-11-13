@@ -13,7 +13,9 @@
         "mincostflow": "cpp",
         "deque": "cpp",
         "vector": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "fenwicktree": "cpp",
+        "segtree": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
