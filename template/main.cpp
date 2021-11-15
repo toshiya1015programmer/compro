@@ -6,6 +6,6 @@ using namespace std;
 using namespace atcoder;
 
 int main() {
-  
+  $0
   return 0;
 }
