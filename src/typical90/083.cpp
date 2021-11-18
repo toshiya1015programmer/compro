@@ -10,44 +10,69 @@ int main() {
   int n, m;
   cin >> n >> m;
   vector<vector<int>> g(n);
+  vector<pair<int, int>> edges;
   rep(i, m) {
     int u, v;
     cin >> u >> v;
     u--, v--;
     g[u].emplace_back(v);
     g[v].emplace_back(u);
+    edges.emplace_back(u, v);
   }
-  vector<vector<int>> que(n);
-  vector<vector<pair<int, int>>> col(n);
+  vector<bool> large(n);
+  rep(i, n) {
+    long long n = g[i].size();
+    large[i] = n * n > m;
+  }
+  vector<vector<int>> lg(n);
+  for (auto e : edges) {
+    if (large[e.first] && large[e.second]) {
+      lg[e.first].emplace_back(e.second);
+      lg[e.second].emplace_back(e.first);
+    }
+  }
   int q;
   cin >> q;
-  rep(i, q) {
+  vector<int> color(q);
+  vector<int> dirid(n, -1);
+  vector<int> indir(n, -1);
+  rep(qi, q) {
     int x, y;
     cin >> x >> y;
     x--;
-    que[x].emplace_back(i);
-    col[x].emplace_back(i, y);
-  }
-  vector<pair<int, int>> ans(q, pair<int, int>(-1, 1));
-  rep(u, n) {
-    auto qs = que[u];
-    for (auto v : g[u]) {
-      for (auto q : que[v]) qs.push_back(q);
-    }
-    sort(col[u].begin(), col[u].end());
-    reverse(col[u].begin(), col[u].end());
-    sort(qs.begin(), qs.end());
-    for (auto [index, color] : col[u]) {
-      int idx = upper_bound(qs.begin(), qs.end(), index) - qs.begin();
-      if (idx == (int) qs.size()) continue;
-      for (int i = (int) qs.size() - 1; i >= idx; i--) {
-        if (ans[qs[i]].first < index) {
-          ans[qs[i]] = pair<int, int>(index, color);
-        }
-        qs.pop_back();
+    if (large[x]) {
+      auto id = -1;
+      id = max(id, dirid[x]);
+      id = max(id, indir[x]);
+      for (auto v : lg[x]) {
+        id = max(id, dirid[v]);
+      }
+      if (id == -1) {
+        cout << 1 << '\n';
+      } else {
+        cout << color[id] << '\n';
+      }
+      for (auto v : lg[x]) {
+        indir[v] = qi;
+      }
+    } else {
+      auto id = -1;
+      id = max(id, dirid[x]);
+      id = max(id, indir[x]);
+      for (auto v : g[x]) {
+        id = max(id, dirid[v]);
+      }
+      if (id == -1) {
+        cout << 1 << '\n';
+      } else {
+        cout << color[id] << '\n';
+      }
+      for (auto v : g[x]) {
+        indir[v] = qi;
       }
     }
+    dirid[x] = qi;
+    color[qi] = y;
   }
-  rep(i, q) cout << ans[i].second << '\n';
   return 0;
 }
