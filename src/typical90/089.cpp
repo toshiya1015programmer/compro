@@ -37,17 +37,6 @@ int main() {
       st.add(in, -1);
       r += 1;
     }
-    while (r > 0 && acc <= K) {
-      int nr = r - 1;
-      auto p = make_pair(a[nr], nr);
-      int in = lower_bound(za.begin(), za.end(), p) - za.begin();
-      int cnt = st.sum(0, in);
-      if (acc + cnt > K) {
-        break;
-      }
-      acc += cnt;
-      r -= 1;
-    }
     dp.add(i + 1, dp.sum(r, i + 1));
   }
   auto ans = dp.sum(n, n + 1);
