@@ -15,6 +15,7 @@ int main() {
     // return s + t <= t + s; は RE
     return s + t < t + s;
   });
+  // 辞書順最小の文字列を作るときは後ろからDP
   reverse(s.begin(), s.end());
   vector dp(n + 1, vector<string>(k + 2, "~"));
   dp[0][0] = "";
