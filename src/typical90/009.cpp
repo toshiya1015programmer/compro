@@ -3,6 +3,7 @@
 using namespace std;
 using namespace atcoder;
 
+// 偏角ソート
 int main() {
   int n;
   cin >> n;
