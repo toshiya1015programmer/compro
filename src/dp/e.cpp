@@ -1,11 +1,11 @@
-#include <atcoder/all>
 #include <bits/stdc++.h>
-#define popcount __builtin_popcountll
+#include <atcoder/all>
 #define rep(i, n) for (int i = 0; i < (int) (n); i++)
-using namespace atcoder;
+#define popcount __builtin_popcountll
 using namespace std;
-template <typename T> bool chmax(T &a, const T& b) { if (a < b) { a = b; return true; } return false; }
-template <typename T> bool chmin(T &a, const T& b) { if (a > b) { a = b; return true; } return false; }
+using namespace atcoder;
+template <typename T> bool amax(T &a, const T& b) { if (a < b) { a = b; return true; } return false; }
+template <typename T> bool amin(T &a, const T& b) { if (a > b) { a = b; return true; } return false; }
 
 template <typename T, typename S> ostream& operator<<(ostream &stream, const pair<T, S> &p) {
   stream << "(" << p.first << "," << p.second << ")";
@@ -37,6 +37,19 @@ template <typename T, typename S> ostream& operator<<(ostream &stream, map<T, S>
 int main() {
   ios::sync_with_stdio(false);
   cin.tie(0);
-  $0
+  int n, W;
+  cin >> n >> W;
+  vector<int> w(n), v(n);
+  rep(i, n) cin >> w[i] >> v[i];
+  vector dp(n + 1, vector<long long>(100001, 1001001001));
+  dp[0][0] = 0;
+  rep(i, n) rep(j, 100001) {
+    if (dp[i][j] == 1001001001) continue;
+    amin(dp[i+1][j], dp[i][j]);
+    amin(dp[i+1][j+v[i]], dp[i][j] + w[i]);
+  }
+  int ans = 0;
+  rep(i, 100001) if (dp[n][i] <= W) amax(ans, i);
+  cout << ans << endl;
   return 0;
 }

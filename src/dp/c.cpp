@@ -1,11 +1,9 @@
-#include <atcoder/all>
 #include <bits/stdc++.h>
-#define popcount __builtin_popcountll
+#include <atcoder/all>
 #define rep(i, n) for (int i = 0; i < (int) (n); i++)
-using namespace atcoder;
+#define popcount __builtin_popcountll
 using namespace std;
-template <typename T> bool chmax(T &a, const T& b) { if (a < b) { a = b; return true; } return false; }
-template <typename T> bool chmin(T &a, const T& b) { if (a > b) { a = b; return true; } return false; }
+using namespace atcoder;
 
 template <typename T, typename S> ostream& operator<<(ostream &stream, const pair<T, S> &p) {
   stream << "(" << p.first << "," << p.second << ")";
@@ -34,9 +32,24 @@ template <typename T, typename S> ostream& operator<<(ostream &stream, map<T, S>
   return stream;
 }
 
+int dp[100001][4];
+
 int main() {
   ios::sync_with_stdio(false);
   cin.tie(0);
-  $0
+  int n;
+  cin >> n;
+  vector<vector<int>> v(n, vector<int>(3));
+  cin >> v;
+  rep(i, n + 1) rep(j, 4) dp[i][j] = -1001001001;
+  dp[0][0] = 0;
+  rep(i, n) rep(j, 4) rep(k, 3) {
+    if (dp[i][j] == -1001001001) continue;
+    if (j > 0 && j == k + 1) continue;
+    dp[i + 1][k + 1] = max(dp[i + 1][k + 1], dp[i][j] + v[i][k]);
+  }
+  int ans = 0;
+  rep(i, 4) ans = max(ans, dp[n][i]);
+  cout << ans << endl;
   return 0;
 }
